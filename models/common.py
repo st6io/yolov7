@@ -929,7 +929,7 @@ class autoShape(nn.Module):
                 scale_coords(shape1, y[i][:, :4], shape0[i])
 
             t.append(time_synchronized())
-            return Detections(imgs, y, files, t, self.names, x.shape)
+            return Detections(imgs, y, files, t, self.model.names, x.shape)
 
 
 class Detections:
