@@ -911,7 +911,7 @@ class autoShape(nn.Module):
             g = (size / max(s))  # gain
             shape1.append([y * g for y in s])
             imgs[i] = im  # update
-        shape1 = [make_divisible(x, int(self.stride.max())) for x in np.stack(shape1, 0).max(0)]  # inference shape
+        shape1 = [make_divisible(x, int(self.model.stride.max())) for x in np.stack(shape1, 0).max(0)]
         x = [letterbox(im, new_shape=shape1, auto=False)[0] for im in imgs]  # pad
         x = np.stack(x, 0) if n > 1 else x[0][None]  # stack
         x = np.ascontiguousarray(x.transpose((0, 3, 1, 2)))  # BHWC to BCHW
