@@ -12,10 +12,10 @@ from pathlib import Path
 
 from PIL import Image
 
-from yolov7.models.common import autoShape
-from yolov7.models.experimental import attempt_load
-from yolov7.utils.google_utils import attempt_download_from_hub, attempt_download
-from yolov7.utils.torch_utils import TracedModel
+from models.common import autoShape
+from models.experimental import attempt_load
+from utils.google_utils import attempt_download_from_hub, attempt_download
+from utils.torch_utils import TracedModel
 
 
 def load_model(model_path, autoshape=True, device='cpu', trace=False, size=640, half=False, hf_model=False):
