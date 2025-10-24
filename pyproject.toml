@@ -3,4 +3,4 @@ name = "yolov7"
 version = "0.1.0"
 
 [tool.setuptools]
-packages = ["models", "utils"]
+packages = ["yolov7", "models", "utils"]
