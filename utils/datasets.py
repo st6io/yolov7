@@ -981,7 +981,8 @@ def replicate(img, labels):
     return img, labels
 
 
-def letterbox(img, new_shape=(640, 640), color=(114, 114, 114), auto=True, scaleFill=False, scaleup=True, stride=32):
+def letterbox(img, new_shape=(640, 640), color=(114, 114, 114), auto=True, scaleFill=False, scaleup=True, stride=32,
+              interpolation=cv2.INTER_LINEAR):
     # Resize and pad image while meeting stride-multiple constraints
     shape = img.shape[:2]  # current shape [height, width]
     if isinstance(new_shape, int):
@@ -1007,7 +1008,7 @@ def letterbox(img, new_shape=(640, 640), color=(114, 114, 114), auto=True, scale
     dh /= 2
 
     if shape[::-1] != new_unpad:  # resize
-        img = cv2.resize(img, new_unpad, interpolation=cv2.INTER_LINEAR)
+        img = cv2.resize(img, new_unpad, interpolation=interpolation)
     top, bottom = int(round(dh - 0.1)), int(round(dh + 0.1))
     left, right = int(round(dw - 0.1)), int(round(dw + 0.1))
     img = cv2.copyMakeBorder(img, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color)  # add border
